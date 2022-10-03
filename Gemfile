@@ -56,3 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'net-smtp'
 gem 'jquery-rails'
+gem 'chartkick'
+gem 'groupdate'
+gem 'jquery-turbolinks'
+gem "chartkick"

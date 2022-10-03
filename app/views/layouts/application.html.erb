@@ -12,7 +12,9 @@
     <%= render 'layouts/header' %>
       <main>
         <p id="notice"><%= notice %></p>
-        <%= yield %>
+        
+        <%= javascript_include_tag "//www.google.com/jsapi" %>
+        <%= yield  %>
       </main>
     <%= render 'layouts/footer' %>
   </body>
