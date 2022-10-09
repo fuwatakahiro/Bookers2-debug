@@ -19,7 +19,8 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+  has_many :group_users
+  has_many :groups, through: :group_users
   has_one_attached :profile_image
   validates :introduction, length: {maximum: 50}
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
