@@ -110,6 +110,7 @@
           <%= line_chart Book.group_by_day(:created_at, range: 6.days.ago.midnight..Time.now, format: "%a").count %>
         </div>
       <% end %>
+      <%= render 'search', user: @user %>
     </div>
   </div>
 </div>

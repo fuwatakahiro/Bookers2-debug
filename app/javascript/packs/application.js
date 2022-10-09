@@ -18,3 +18,4 @@ Turbolinks.start()
 ActiveStorage.start()
 require("chartkick") // 追記
 require("chart.js") // 追記
+window.$ = window.jQuery = require('jquery');

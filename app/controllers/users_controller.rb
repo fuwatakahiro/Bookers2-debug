@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
     @books_count = Book.group_by_day(:created_at, range: 6.days.ago.midnight..Time.now).size
-        # ユーザー登録数グラフ出力　gem groupdateをインストールしないと上記の記述は使用不可
+        # ユーザー登録数グラフ出力gem groupdateをインストールしないと上記の記述は使用不可
     @books_today = Book.where(created_at: Date.today.all_day).count
         # ユーザーの1日の登録数
     @today_book = @books.created_today
@@ -32,7 +32,10 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
+  def search
+    @user = User.find(params[:user_id]) 
+    @books = @user.books.where(created_at: params[:created_at].to_date.all_day) 
+  end
   private
 
   def user_params
