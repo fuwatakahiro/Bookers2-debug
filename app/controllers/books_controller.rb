@@ -11,10 +11,13 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @books = Book.all.order(params[:sort])
+    # いいねが多い記事が上にくる
+    # @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    # 投稿が新しいほど上にくる
+    # @books = Book.all.order(created_at: :desc)
     @book = Book.new
   end
-
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
