@@ -15,8 +15,11 @@ Rails.application.routes.draw do
     get "search" => "users#search"
   end
   get "search" => "searches#search", as: "search"
-  resources :chats, only: [:show, :create]
+  resources :chats, only: [ :create, :show]
+  resources :room, only: [:create, :show]
   resources :groups do
     get "join" => "groups#join", as: "join"
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
   end
 end
