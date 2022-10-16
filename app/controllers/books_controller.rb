@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   def show
     @book = Book.find(params[:id])
     unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
@@ -48,7 +48,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :rate)
   end
   def correct_user
     @book = Book.find(params[:id])
